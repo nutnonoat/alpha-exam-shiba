@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Byte
+      changes:
+        - createTable:
+            tableName: electricity_bill
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: billed_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: country
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: unit
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp

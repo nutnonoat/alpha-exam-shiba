@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: Byte
+      changes:
+        - createTable:
+            tableName: cost_per_unit
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: country
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cost_per_unit
+                  type: varchar(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp

@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: Byte
+      changes:
+        - insert:
+            tableName: cost_per_unit
+            columns:
+              - column:
+                  name: id
+                  value: b5ce4b08-34ef-47aa-ad78-d3b5d59e62e2
+              - column:
+                  name: country
+                  value: "Thailand"
+              - column:
+                  name: cost_per_unit
+                  value: "10"
+              - column:
+                  name: created_at
+                  value: '2020-01-31T00:00:00.000'
+        - insert:
+            tableName: cost_per_unit
+            columns:
+              - column:
+                  name: id
+                  value: 609cbeb2-3abc-4666-a6a4-223c10a90b84
+              - column:
+                  name: country
+                  value: "Japan"
+              - column:
+                  name: cost_per_unit
+                  value: "20"
+              - column:
+                  name: created_at
+                  value: '2020-01-31T00:00:00.000'
+        - insert:
+            tableName: cost_per_unit
+            columns:
+              - column:
+                  name: id
+                  value: 5c665e09-1fb4-4918-ac04-d97177e7c9f2
+              - column:
+                  name: country
+                  value: "Singapore"
+              - column:
+                  name: cost_per_unit
+                  value: "30"
+              - column:
+                  name: created_at
+                  value: '2020-01-31T00:00:00.000'

@@ -17,12 +17,12 @@ public class ElectricityBillController {
 
     @GetMapping("/v2/cost")
     public ResponseEntity<ResponseDto> fetchCostOfElectricityBill(
-            @RequestParam(name = "name") String name,
+            @RequestParam(name = "country") String country,
             @RequestParam(name = "startDate") String startDate,
             @RequestParam(name = "endDate") String endDate
     ){
         ResponseDto responseDto =
-                electricityBillService.fetchCostOfElectricityBill(name, startDate, endDate );
+                electricityBillService.fetchCostOfElectricityBill(country, startDate, endDate );
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 }

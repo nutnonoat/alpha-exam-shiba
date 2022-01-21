@@ -4,5 +4,5 @@ import com.alpha.exam.exam.dto.response.ResponseDto;
 
 public interface ElectricityBillService {
 
-    public ResponseDto fetchCostOfElectricityBill(String name, String startDate, String endDate);
+    public ResponseDto fetchCostOfElectricityBill(String country, String startDate, String endDate);
 }

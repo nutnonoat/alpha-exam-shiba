@@ -11,8 +11,8 @@ import java.util.UUID;
 @Repository
 public interface ElectricityBillRepository extends JpaRepository<ElectricityBill, UUID> {
 
-    public List<ElectricityBill> findByCountryOrderByUnitDesc(String name);
-   // public List<ElectricityBill> findByCountryAAndBilledAtBetweenOrderByUnitDesc(
-//            String name, LocalDateTime );
+   public List<ElectricityBill> findByCountryOrderByUnitDesc(String country);
+   List<ElectricityBill> findByCountryAndBilledAtBetweenOrderByUnitDesc(
+            String country, LocalDateTime startDate, LocalDateTime endDate);
 
 }

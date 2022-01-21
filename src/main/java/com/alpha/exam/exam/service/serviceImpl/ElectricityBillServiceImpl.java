@@ -15,7 +15,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,10 +27,12 @@ public class ElectricityBillServiceImpl implements ElectricityBillService {
     CostPerUnitRepository costPerUnitRepository;
 
     @Override
-    public ResponseDto fetchCostOfElectricityBill(String name, String startDate, String endDate) {
+    public ResponseDto fetchCostOfElectricityBill(String country, String startDate, String endDate) {
 
         List<ElectricityBill> electricityBillList =
-                electricityBillRepository.findByCountryOrderByUnitDesc(name);
+                //electricityBillRepository.findByCountryOrderByUnitDesc(country);
+                electricityBillRepository.findByCountryAndBilledAtBetweenOrderByUnitDesc(
+                        country, getLocalDateTime(startDate), getLocalDateTime(endDate));
 
         double totalUnit=0;
         double costPerunit=0;
@@ -39,7 +40,7 @@ public class ElectricityBillServiceImpl implements ElectricityBillService {
         if(!electricityBillList.isEmpty()){
             totalUnit = electricityBillList.stream().mapToDouble(x->Double.parseDouble(x.getUnit())).sum();
 
-            CostPerUnit costPerUnit = costPerUnitRepository.findByCountry(name);
+            CostPerUnit costPerUnit = costPerUnitRepository.findByCountry(country);
             costPerunit = Double.parseDouble(costPerUnit.getCostPerUnit());
 
         }
@@ -70,10 +71,9 @@ public class ElectricityBillServiceImpl implements ElectricityBillService {
     }
 
     private LocalDateTime getLocalDateTime(String date){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyymmdd");
-        LocalDate localDateTime = formatter.parse(date, LocalDate::from);
-       // LocalDate  localDateTime = LocalDate.parse(date, formatter);
-        return  localDateTime.atTime(0,0,0,0);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate localDate = formatter.parse(date, LocalDate::from);
+        return  localDate.atTime(0,0,0,0);
     }
 
 }
